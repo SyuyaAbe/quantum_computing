@@ -15,3 +15,9 @@ c = Circuit().h[0,1].m[:].run(shots=100)
 print(a)
 print(b)
 print(c)
+
+
+#多数の量子ビットで重ね合わせ。
+#Hadamard gateを配置して、0と1が50％ずつの確率で測定を行う
+x = Circuit().h[0, 1, 2, 3].m[:].run(shots=1000)
+print(x)
