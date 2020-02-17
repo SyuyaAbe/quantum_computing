@@ -1,0 +1,52 @@
+\documentclass{jsarticle}
+\usepackage[dvipdfmx]{graphicx}
+
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage[cmex10]{amsmath}
+
+\usepackage{qcircuit}
+\usepackage{braket}
+
+
+\begin{document}
+
+\section{サンプルの回路}
+\Qcircuit @C=1em @R=.7em {
+  \lstick{\ket{0}} & \gate{H} & \ctrl{1} & \qw          & \qw      & \meter \\
+  \lstick{\ket{0}} & \qw      & \targ    & \ctrl{1}     & \qw      & \meter \\
+  \lstick{\ket{0}} & \qw      & \gate{H} & \control \qw & \gate{H} & \meter
+}
+\par
+\vspace{1.0cm}
+\section{CNOTゲート}
+\Qcircuit @C=1em @R=2em {
+  \lstick{} & \qw & \ctrl{1} & \qw    & \qw       \\
+  \lstick{} & \qw & \targ    & \qw    & \qw   
+}
+\vspace{1.0cm}
+\section{Toffoliゲート}
+\Qcircuit @C=1em @R=2em {
+  \lstick{} & \qw & \ctrl{1} & \qw    & \qw       \\
+  \lstick{} & \qw & \ctrl{1} & \qw    & \qw       \\
+  \lstick{} & \qw & \targ    & \qw    & \qw   
+}
+\vspace{1.0cm}
+\section{加算の回路}
+\Qcircuit @C=2em @R=2em {
+  A \quad & \ctrl{2} \qw  & \qw      & \ctrl{1}   & \qw & \qw \\
+  B \quad & \qw             & \ctrl{1} & \ctrl{2}   & \qw & \qw \\
+  S \quad & \targ   \qw   & \targ    & \qw        & \meter & \qw   \\
+  C \quad & \qw             & \qw      & \targ      & \meter & \qw 
+}
+
+\vspace{1.0cm}
+\section{桁上がりの処理}
+\Qcircuit @C=2em @R=2em {
+  \lstick{\ket{1} A} \quad & \ctrl{2} \qw  & \qw      & \ctrl{1}   &  \qw & \rstick{\hspace{-0.5cm} \ket{1}}  \\
+  \lstick{\ket{1} B}  \quad & \qw             & \ctrl{1} & \ctrl{2}  &  \qw & \rstick{\hspace{-0.5cm} \ket{1}}\\
+  \lstick{\ket{0} S} \quad & \targ   \qw   & \targ    & \qw        & \qw & \rstick{\hspace{-0.5cm} \ket{0}}  \\
+  \lstick{\ket{0} C} \quad & \qw             & \qw      & \targ      &  \qw  & \rstick{\hspace{-0.5cm} \ket{1}}
+}
+
+\end{document}
