@@ -1,2 +1,1 @@
-# quantum_computing
-量子コンピューティングの自作コード。blueqatをメインで使用。
+blueqatをメインで使用してます．誰でもご自由に
